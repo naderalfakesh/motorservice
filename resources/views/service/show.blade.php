@@ -6,7 +6,6 @@
     <h1>This is services show page</h1>
     <hr>
 
-
     {{-- fetching the associated pictures  --}}
     @if ($service->picture->count())
         <ul>

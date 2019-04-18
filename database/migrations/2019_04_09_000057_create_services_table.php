@@ -44,7 +44,7 @@ class CreateServicesTable extends Migration
 
             // $table->text('personalIds');// change it to user roles
 
-            $table->text('activePictursIds'); // change it to active pictures
+            //$table->text('activePictursIds'); // change it to active pictures
 
             $table->timestamps();
         });

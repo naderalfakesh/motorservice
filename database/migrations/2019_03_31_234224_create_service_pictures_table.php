@@ -18,7 +18,7 @@ class CreateServicePicturesTable extends Migration
 
             $table->bigInteger('serviceId')->unsigned();
            
-            $table->text('url');
+            $table->text('link');
 
             $table->string('title');
 

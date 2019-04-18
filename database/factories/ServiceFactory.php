@@ -13,8 +13,7 @@ $factory->define(App\service::class, function (Faker $faker) {
         'costAmount' => $faker->randomFloat(4,0,1000) ,
         'costCurrency' => $faker->text(6) ,
         'taxAmount' => $faker->numberBetween(1,100) ,
-        'bankBranch' => $faker->text(10) ,
-        'activePictursIds' => $faker->text(10)
+        'bankBranch' => $faker->text(10) 
 
 
     ];

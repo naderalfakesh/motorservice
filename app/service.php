@@ -13,10 +13,7 @@ class service extends Model
         else {return $this->belongsToMany(company::class)->withPivot('role');}
 
     }
-    //get requesting company
-    public function requestingCompany(){
-        return $this->belongsToMany(company::class)->wherePivot('role','requestingCompany');
-    }
+  
     //Get products of this service
     public function product(){
         return $this->belongsToMany(product::class);
@@ -28,7 +25,7 @@ class service extends Model
     //Get envolved contacts
     public function contact($role){
         if($role <> ''){ return $this->belongsToMany(contact::class)->wherePivot('role',$role);}
-        else {return $this->belongsToMany(company_service::class);}
+        else {return $this->belongsToMany(contact::class);}
 
     }
 

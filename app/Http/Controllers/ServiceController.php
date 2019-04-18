@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\service;
+use App\company;
+use App\contact;
+use App\product;
+use App\ServicePictures;
+// use App\product;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -25,7 +30,10 @@ class ServiceController extends Controller
      */
     public function create()
     {
-         return view('/service/create');
+        $company = company::all();
+        $contact = contact::all();
+        // $product = product::all();
+         return view('/service/create' , compact('company','contact'));
     }
 
     /**
@@ -36,9 +44,38 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        // insert service
         $service = new service;
-        $service->create($request->all());
-        dd('nader');
+        $service = $service->create($request->except('motor','company','personincontact','activePictursIds'));
+        
+        /* You should check wich product is selected then you continue regarding that */
+
+        // insert product 
+        $product = new product;
+        $product->type= 'motor';
+        $product->specifics = json_encode($request->input('motor'));
+        $product->save();
+        $service->product()->attach($product->id);
+
+        //insert company role
+        $companyId = $request->input('company');
+        $service->company('')->attach($companyId ,['role'=>'requestingCompany'] );
+
+        //insert contact relation
+        $contact = $request->input('personincontact');
+        $service->contact('')->attach($contact ,['role'=>'personincontact'] );
+        
+        // insert images
+        $images = $request->file('activePictursIds');
+        foreach ($images as  $image) {
+            $picture['link'] = $image->store('images');;
+            $picture ['title'] = $image->getClientOriginalName();
+            $picture ['description'] = $picture['link'].$picture ['title'];
+            $service->picture()->create($picture);
+        }
+        
+        return redirect('service/create');
+
     }
 
     /**
