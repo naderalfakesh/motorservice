@@ -20,3 +20,7 @@ Route::get('/about', 'PagesController@about');
 Route::resource('/service', 'ServiceController');
 
 Route::resource('/company', 'CompanyController');
+
+Route::resource('/serviceOffer', 'serviceOffersController');
+
+Route::get('/serviceOffer/create/{service}', 'serviceOffersController@create');

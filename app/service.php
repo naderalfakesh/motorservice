@@ -18,7 +18,7 @@ class service extends Model
     public function product(){
         return $this->belongsToMany(product::class);
     }
-    //Get picturs
+    //Get pictures
     public function picture(){
         return $this->hasMany(ServicePictures::class,'serviceId');
     }
@@ -27,6 +27,10 @@ class service extends Model
         if($role <> ''){ return $this->belongsToMany(contact::class)->wherePivot('role',$role);}
         else {return $this->belongsToMany(contact::class);}
 
+    }
+    //Get offers
+    public function offer(){
+        return $this->hasMany(service_offers::class,'service_id');
     }
 
 

@@ -3,9 +3,11 @@
 @section('content')
 
 <div class="container">
-    <h1>This is services show page</h1>
+    <h1>SERVİCE DETAİLS</h1>
     <hr>
-
+    <div class="mb-2">
+    <a href="/serviceOffer/create/{{$service->id}}" class="btn btn-primary">Make a proposal</a>
+    </div>
     {{-- fetching the associated pictures  --}}
     @if ($service->picture->count())
         <ul>
@@ -19,7 +21,7 @@
     {{-- fetching the requesting companies --}}
     @if ($service->company('requestingCompany')->count())
         @foreach ($service->company('requestingCompany')->get() as $requestingCompany)
-            <div class="card">
+            <div class="card mb-2">
                 <div class="card-body">
                     <h2 class="card-title">{{$requestingCompany->name}}</h2>
                     <p class="card-text">
@@ -43,7 +45,7 @@
     {{-- fetching the products details --}}
     @if ($service->product->count())
         @foreach ($service->product as $product)
-            <div class="card">
+            <div class="card mb-2">
                 <div class="card-body">
                     <h2 class="card-title">{{$product->type}}</h2>
                     <p class="card-text">
@@ -59,7 +61,7 @@
 
     {{-- Filure details --}}
     @if ($service->failureDescription)
-        <div class="card">
+        <div class="card mb-2">
             <div class="card-body">
                 <h2 class="card-title">Failure Details</h2>
                 <p class="card-test">
@@ -71,7 +73,7 @@
 
     {{-- root cause --}}
     @if ($service->rootCause)
-        <div class="card">
+        <div class="card mb-2">
             <div class="card-body">
                 <h2 class="card-title">Root cause</h2>
                 <p class="card-test">
@@ -83,7 +85,7 @@
 
     {{-- Jobs that done --}}
     @if ($service->serviceAction)
-        <div class="card">
+        <div class="card mb-2">
             <div class="card-body">
                 <h2 class="card-title">Jobs that done</h2>
                 <p class="card-test">
@@ -95,7 +97,7 @@
 
     {{-- Warranty case --}}
     @if ($service->warrantyStatus)
-        <div class="card">
+        <div class="card mb-2">
             <div class="card-body">
                 <h2 class="card-title">Warranty status</h2>
                 <p class="card-test">

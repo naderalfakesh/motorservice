@@ -18,46 +18,57 @@ class AddConstraints extends Migration
 
 
 
-        Schema::table('service_pictures', function($table){
-            $table->foreign('serviceId')->references('id')->on('services');
+        // Schema::table('service_pictures', function($table){
+        //     $table->foreign('serviceId')->references('id')->on('services');
 
-        });
+        // });
 
-        Schema::table('purchase_offers', function($table){
-            $table->foreign('companyId')->references('id')->on('companies');
-            $table->foreign('personId')->references('id')->on('users');
-            $table->foreign('userId')->references('id')->on('users');
+        // Schema::table('purchase_offers', function($table){
+        //     $table->foreign('companyId')->references('id')->on('companies');
+        //     $table->foreign('personId')->references('id')->on('users');
+        //     $table->foreign('userId')->references('id')->on('users');
 
-        });
+        // });
 
-        Schema::table('purchase_orders', function($table){
-            $table->foreign('companyId')->references('id')->on('companies');
-            $table->foreign('personId')->references('id')->on('users');
-            $table->foreign('userId')->references('id')->on('users');
+        // Schema::table('purchase_orders', function($table){
+        //     $table->foreign('companyId')->references('id')->on('companies');
+        //     $table->foreign('personId')->references('id')->on('users');
+        //     $table->foreign('userId')->references('id')->on('users');
 
-        });
+        // });
 
-        Schema::table('product_service', function($table){
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('service_id')->references('id')->on('services');
+        // Schema::table('product_service', function($table){
+        //     $table->foreign('product_id')->references('id')->on('products');
+        //     $table->foreign('service_id')->references('id')->on('services');
 
-        });
-        Schema::table('company_addresses', function($table){
-            $table->foreign('company_id')->references('id')->on('companies');
+        // });
+        // Schema::table('company_addresses', function($table){
+        //     $table->foreign('company_id')->references('id')->on('companies');
 
-        });
+        // });
+        
+        // Schema::table('company_service', function($table){
+        //     $table->foreign('service_id')->references('id')->on('services');
+        //     $table->foreign('company_id')->references('id')->on('companies');
+            
+        // });
+        
+        // Schema::table('contact_service', function($table){
+        //     $table->foreign('contact_id')->references('id')->on('contacts');
+        //     $table->foreign('service_id')->references('id')->on('services');
+            
+        // });
+        
+        // Schema::table('service_offers', function($table){
+        //     $table->foreign('service_id')->references('id')->on('services');
+        //     $table->foreign('authorizedPersonId')->references('id')->on('contacts');
 
-        Schema::table('company_service', function($table){
-            $table->foreign('service_id')->references('id')->on('services');
-            $table->foreign('company_id')->references('id')->on('companies');
+        // });
+        
+        // Schema::table('contacts', function($table){
+        //     $table->foreign('company_id')->references('id')->on('contacts');
 
-        });
-
-        Schema::table('contact_service', function($table){
-            $table->foreign('contact_id')->references('id')->on('contacts');
-            $table->foreign('service_id')->references('id')->on('services');
-
-        });
+        // });
 
     }
 

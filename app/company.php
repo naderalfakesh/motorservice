@@ -26,4 +26,10 @@ class company extends Model
     public function service(){
         return $this->belongsToMany(service::class)->withPivot('role');
     }
+    
+    public function contact(){
+        return $this->hasMany(contact::class,'company_id');
+    }
+    
+    
 }
