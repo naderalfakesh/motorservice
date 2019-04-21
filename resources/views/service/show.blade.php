@@ -1,12 +1,13 @@
 @extends('layout.layout')
-
+{{-- {{dd()}} --}}
 @section('content')
 
 <div class="container">
     <h1>SERVİCE DETAİLS</h1>
     <hr>
     <div class="mb-2">
-    <a href="/serviceOffer/create/{{$service->id}}" class="btn btn-primary">Make a proposal</a>
+    <a href="/service/offer/index/{{$service->id}}" class="btn btn-primary">Offers</a>
+    
     </div>
     {{-- fetching the associated pictures  --}}
     @if ($service->picture->count())

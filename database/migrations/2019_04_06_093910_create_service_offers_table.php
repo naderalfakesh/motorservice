@@ -17,12 +17,12 @@ class CreateServiceOffersTable extends Migration
             $table->bigIncrements('id');
             
             $table->bigInteger('service_id')->unsigned();
+
+            $table->bigInteger('company_id')->unsigned();
             
-            $table->string('refereance');
+            $table->string('referance');
             
             $table->float('total');
-            
-            $table->integer('tax');
             
             $table->string('deliveryTerms');
             

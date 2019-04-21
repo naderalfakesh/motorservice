@@ -8,13 +8,25 @@
 
         @php
             $productAttributes=json_decode(Storage::disk('local')->get('json/productAttributes.json'),true );
+        //dd($productAttributes);
         @endphp
         
         <div class="row form-group">
         @foreach ($productAttributes['motor'] as $key => $value)
             <div class="col">
-                <label for="{{$key}}">{{$key}}</label>
-                <input type="text" name="motor[{{$key}}]" class="form-control" id="{{$key}}" >
+                @if (!is_array($value))
+                    <label for="{{$key}}">{{$key}}</label>
+                    <input type="text" name="motor[{{$key}}]" class="form-control" id="{{$key}}" >
+                @else
+                    <label for="{{$key}}">{{$key}}</label>
+                    {{-- <input type="text" name="motor[{{$key}}]" class="form-control" id="{{$key}}" > --}}
+                    <select name="motor[{{$key}}]" id="{{$key}}" class="form-control">
+                        @foreach ($value as $value)
+                        <OPtion value="{{$value}}">{{$value}}</OPtion>
+                        @endforeach
+                    </select>
+                @endif
+                
             </div>
             @endforeach
         </div>

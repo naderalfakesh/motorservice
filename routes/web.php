@@ -15,12 +15,15 @@ Route::get('/', 'PagesController@index');
 
 Route::get('/about', 'PagesController@about');
 
-//Route::get('/services', 'PagesController@services');
+Route::resource('/company', 'CompanyController');
+
+Route::resource('/service/offer', 'serviceOffersController');
+
+Route::get('/service/offer', 'serviceOffersController@index');
+
+Route::get('/service/offer/create/{service}', 'serviceOffersController@create');
+
+Route::get('/service/offer/index/{serviceId}', 'serviceOffersController@serviceOfferIndex');
 
 Route::resource('/service', 'ServiceController');
 
-Route::resource('/company', 'CompanyController');
-
-Route::resource('/serviceOffer', 'serviceOffersController');
-
-Route::get('/serviceOffer/create/{service}', 'serviceOffersController@create');

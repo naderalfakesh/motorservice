@@ -30,6 +30,10 @@ class company extends Model
     public function contact(){
         return $this->hasMany(contact::class,'company_id');
     }
+    public function serviceOffer(){
+        return $this->hasMany(service_offers::class,'company_id');
+    }
+    
     
     
 }
