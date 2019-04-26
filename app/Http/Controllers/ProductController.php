@@ -46,7 +46,10 @@ class productController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(product $product)
-    {
+    {   
+        dd(json_decode($product->specifics));
+        dd(json_encode($product->specifics));
+    
         return view('/product/show');
     }
 
@@ -57,7 +60,7 @@ class productController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(product $product)
-    {
+    {   
         return view('/product/index');
     }
 
