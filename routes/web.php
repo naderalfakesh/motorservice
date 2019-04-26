@@ -17,13 +17,26 @@ Route::get('/about', 'PagesController@about');
 
 Route::resource('/company', 'CompanyController');
 
-Route::resource('/service/offer', 'serviceOffersController');
-
-Route::get('/service/offer', 'serviceOffersController@index');
-
-Route::get('/service/offer/create/{service}', 'serviceOffersController@create');
+Route::resource('/product' , 'productController');
 
 Route::get('/service/offer/index/{serviceId}', 'serviceOffersController@serviceOfferIndex');
 
+Route::get('/service/offer/create/{service}', 'serviceOffersController@create');
+
+Route::resource('/service/offer', 'serviceOffersController');
+
+Route::resource('/service/order', 'serviceOrdersController');
+
 Route::resource('/service', 'ServiceController');
 
+Route::apiResources([
+    'api/product' => 'API\productController'
+    // ,'posts' => 'ServiceController'
+]);
+
+
+
+// Route::resource([
+//     '/company' => 'CompanyController',
+//     '/product' => 'productController'
+//     ]);

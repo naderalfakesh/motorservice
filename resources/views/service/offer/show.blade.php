@@ -3,19 +3,7 @@
 @section('content')
 <div class="container ">
     <h1 class="text-center">Service Offer</h1>
- {{-- needed for pagination --}}
-  
- <div class="d-flex">
-     <a href="/service/offer/{{$offer->id}}/edit" class="btn btn-primary">edit</a>
-     <form action="/service/offer/{{$offer->id}}" method="POST">
-         @csrf
-         @method('DELETE')
-         <input type="submit"  value="Delete" class="btn btn-danger">
-    </form>
- </div>
-
-
- <div class="card card-body mb-2">
+    <div class="card card-body mb-2">
        <div class="row">
             <div class="col-8">
                 @foreach ($offer->service->product as $product)
@@ -127,7 +115,15 @@
                 <p>{{$offer->authorizedPerson->name}}</p>
         </div>
     </div>
-    
+    <div class="d-flex  justify-content-between mb-2">
+        <a href="/service/offer/{{$offer->id}}/edit" class="btn btn-primary">Edit</a>
+        <a href="/service/offer/{{$offer->id}}/edit" class="btn btn-dark   ">Convert into invoice</a>
+        <form action="/service/offer/{{$offer->id}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <input type="submit"  value="Delete" class="btn btn-danger">
+        </form>
+    </div>
    
     
 </div>

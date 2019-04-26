@@ -3,6 +3,7 @@
 @section('content')
 <div class="container ">
     <h1 class="text-center">Edit Service Offer</h1>
+    <a href="/service/offer/index/{{$offer->service->id}}" class="btn btn-dark">Back</a>
 <form action="/service/offer/{{$offer->id}}" method="POST">
 @csrf
 @method('PATCH')

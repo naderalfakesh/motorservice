@@ -20,9 +20,17 @@ class CreateServiceOffersTable extends Migration
 
             $table->bigInteger('company_id')->unsigned();
             
+            $table->bigInteger('contact_id')->unsigned();
+
+            $table->bigInteger('authorizedPersonId')->unsigned();
+            
             $table->string('referance');
             
             $table->float('total');
+            
+            $table->float('totalTax');
+            
+            $table->string('totalCurrency');
             
             $table->string('deliveryTerms');
             
@@ -34,7 +42,7 @@ class CreateServiceOffersTable extends Migration
             
             $table->string('commercialTerms');
             
-            $table->bigInteger('authorizedPersonId')->unsigned();
+            $table->string('status');
 
             $table->timestamps();
         });

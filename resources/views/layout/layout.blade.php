@@ -39,7 +39,11 @@
                   <div id="app">
                     @yield('content')
                   </div>
-                  
+
+                  <div class="mt-2 container">
+                    <hr>
+                    <p>Copyright to nader</p>
+                  </div>
      <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

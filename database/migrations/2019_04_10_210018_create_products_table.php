@@ -18,6 +18,12 @@ class CreateProductsTable extends Migration
             
             $table->string('type');
 
+            $table->string('materialNo');
+
+            $table->string('sn');
+
+            // $table->string('type');
+
             $table->string('specifics');
 
             $table->timestamps();

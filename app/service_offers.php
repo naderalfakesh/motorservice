@@ -10,12 +10,19 @@ class service_offers extends Model
     public function service(){
         return $this->belongsTo(service::class,'service_id');
     }
+
     public function company(){
         return $this->belongsTo(company::class,'company_id');
     }
+
     public function authorizedPerson(){
         return $this->belongsTo(contact::class,'authorizedPersonId');
     }
+    
+    public function contact(){
+        return $this->belongsTo(contact::class,'contact_id');
+    }
+    
     public function item(){
         return $this->hasMany(Items::class,'orderId');
     }

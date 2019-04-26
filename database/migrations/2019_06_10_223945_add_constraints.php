@@ -63,7 +63,7 @@ class AddConstraints extends Migration
         //     $table->foreign('service_id')->references('id')->on('services');
         //     $table->foreign('company_id')->references('id')->on('companies');
         //     $table->foreign('authorizedPersonId')->references('id')->on('contacts');
-
+        //     $table->foreign('contact_id')->references('id')->on('contacts');
         // });
         
         // Schema::table('contacts', function($table){

@@ -15,6 +15,35 @@ class CreateServiceOrdersTable extends Migration
     {
         Schema::create('service_orders', function (Blueprint $table) {
             $table->bigIncrements('id');
+
+            $table->bigInteger('service_id')->unsigned();
+
+            $table->bigInteger('company_id')->unsigned();
+            
+            $table->bigInteger('contact_id')->unsigned();
+
+            $table->bigInteger('authorizedPersonId')->unsigned();
+            
+            $table->string('referance');
+            
+            $table->float('total');
+            
+            $table->float('totalTax');
+            
+            $table->float('totalCurrency');
+            
+            $table->string('deliveryTerms');
+            
+            $table->string('deliveryTime');
+            
+            $table->string('paymentType');
+            
+            $table->string('validTime');
+            
+            $table->string('commercialTerms');
+            
+            $table->string('status');
+
             $table->timestamps();
         });
     }

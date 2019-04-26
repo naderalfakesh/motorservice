@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\product;
+use App\Http\Resources\product as productResource;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class productController extends Controller
 {
@@ -14,18 +16,8 @@ class productController extends Controller
      */
     public function index()
     {
-        $product=product::orderBy('created_at','desc')->get();
-        return view('/product/index' , compact('product') );
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('/product/create');
+        $product = product::paginate(2);
+        return productResource::collection($product);
     }
 
     /**
@@ -36,7 +28,9 @@ class productController extends Controller
      */
     public function store(Request $request)
     {
-        return view('/product/index');
+        $product = $request->isMethod('PUT') ? product::findOrFail($request->id) : new product;
+        //$product->id = $request->input('product_id')
+        return new productResource($product);
     }
 
     /**
@@ -47,18 +41,7 @@ class productController extends Controller
      */
     public function show(product $product)
     {
-        return view('/product/show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(product $product)
-    {
-        return view('/product/index');
+        return new productResource($product);
     }
 
     /**
@@ -70,7 +53,7 @@ class productController extends Controller
      */
     public function update(Request $request, product $product)
     {
-        return view('/product/index');
+        // return new productResource($product);
     }
 
     /**
@@ -80,7 +63,10 @@ class productController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(product $product)
-    {
-        return view('/product/index');
+    {   
+        if($product->delete()){
+        return new productResource($product);
+        }
+        
     }
 }

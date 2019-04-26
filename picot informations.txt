@@ -1,0 +1,18 @@
+Retrieving Intermediate Table Columns
+$user = App\User::find(1);
+
+foreach ($user->roles as $role) {
+    echo $role->pivot->created_at;
+}
+
+return $this->belongsToMany('App\Role')->withPivot('column1', 'column2');
+
+Customizing The pivot Attribute Name
+
+return $this->belongsToMany('App\Podcast')
+                ->as('subscription')
+                ->withTimestamps();
+
+return $this->belongsToMany('App\Role')->wherePivot('approved', 1);
+
+return $this->belongsToMany('App\Role')->wherePivotIn('priority', [1, 2]);

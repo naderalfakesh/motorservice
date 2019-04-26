@@ -16,8 +16,7 @@ class serviceOffersController extends Controller
      */
     public function index()
     {
-        $offer= service_offers::where('service_id','=',$service->id)->orderBy('created_at','desc')->get();
-        dd($offer);
+        $offer= service_offers::all();
         return view('/service/offer/index' , compact('offer'));
     }
 
@@ -115,12 +114,14 @@ class serviceOffersController extends Controller
      */
     public function update(Request $request, service_offers $offer)
     {   
-        
-        $offer->update($request->input('offer'));
+        $total = 0;
         foreach ($request->input('item') as $key => $value) {
             $offer->item()->find($request->input('itemId')[$key])->update($value);
+            $total += $value['unitPrice'] * $value['amount'];
         }
-
+        // $offer->fill($request->input('offer'));
+        // $offer->total=$total;
+        $offer->update($request->input('offer') + ['total' => $total]);
         return view("/service/offer/edit" , compact('offer') );
     }
 
