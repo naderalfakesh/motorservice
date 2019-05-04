@@ -16,7 +16,7 @@ class productController extends Controller
      */
     public function index()
     {
-        $product = product::paginate(5);
+        $product = product::paginate(2);
         // $product->each(function ($item, $key) {
         //     $item->specifics=json_decode($item->specifics,true);
         // });
